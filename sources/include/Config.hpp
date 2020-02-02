@@ -20,6 +20,7 @@
 // Environement
 namespace menu {
     static const std::string background("assets/visual/background/menu/menu.png");
+    static const std::string credit("assets/visual/background/menu/credit.png");
 }
 
 // Environement
@@ -59,6 +60,6 @@ namespace littleDeath {
 
 #define MIDDLEX 2680
 #define MIDDLEY 1227
-#define DEBUG true
+//#define DEBUG true
 
 #endif // CONFIG

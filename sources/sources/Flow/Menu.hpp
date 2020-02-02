@@ -14,7 +14,7 @@
 class Menu : public Scene {
 public:
     Menu(sf::RenderWindow &window, Object &background, sf::Music &music, \
-         Object &startButton, Object &exitButton);
+         Object &startButton, Object &exitButton, Object &creditButton, Object &credit, Object &exitButtonCredit);
     ~Menu() = default;
 
     void keyPressed();
@@ -32,6 +32,9 @@ public:
 private:
     Object &_startButton;
     Object &_exitButton;
+    Object &_creditButton;
+    Object &_credit;
+    Object &_exitButtonCredit;
 };
 
 #endif // MENU_HPP

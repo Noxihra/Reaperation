@@ -22,9 +22,12 @@ int main()
 // ------------------------------------------------------------------ Menu
     // Menu menu(data.window);
     Object menuBackground(data.texture["menuBackground"]);
+    Object menuCredit(data.texture["menuCredit"]);
     Object startButton(data.texture["none"], data.hitbox["menuStartButton"]);
     Object exitButton(data.texture["none"], data.hitbox["menuExitButton"]);
-    Menu menu(data.window, menuBackground, data.music["menu"], startButton, exitButton);
+    Object creditButton(data.texture["none"], data.hitbox["menuCreditButton"]);
+    Object exitButtonCredit(data.texture["none"], data.hitbox["menuExitButtonCredit"]);
+    Menu menu(data.window, menuBackground, data.music["menu"], startButton, exitButton, creditButton, menuCredit, exitButtonCredit);
 
 // ------------------------------------------------------------------ Level1
     Object background(data.texture["background"]);
@@ -34,7 +37,6 @@ int main()
                      data.texture["littleDeathJump"], data.texture["littleDeathFall"], \
                      data.texture["littleDeathDie"], \
                      data.hitbox["littleDeath"], 0, 0, 0.4, 0.4, 0, 0, 0, littleDeath::textureRect);
-                     //data.hitbox["ground"], 0, 0, 0.4, 0.4, 0, 0, 0, littleDeath::textureRect);
     Object backgroundFirstLayer(data.texture["forest_1"], sfFloatRect0DefaultValue, 0, 0, 0, 1, 1, 0, 0, 0);
     Object backgroundSecondLayer(data.texture["forest_2"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
     Object backgroundThirdLayer(data.texture["forest_3"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);

@@ -20,21 +20,24 @@ Data::Data()
 
 // ------------------------------------------------------------------ Hitbox
     // Menu
-    this->hitbox["menuStartButton"] = sf::FloatRect(965, 735, 225, 125);
-    this->hitbox["menuExitButton"] = sf::FloatRect(1450, 835, 225, 125);
+    this->hitbox["menuStartButton"] = sf::FloatRect(905, 625, 225, 125);
+    this->hitbox["menuExitButton"] = sf::FloatRect(1385, 725, 225, 125);
+    this->hitbox["menuCreditButton"] = sf::FloatRect(360, 797.5, 225, 125);
+    this->hitbox["menuExitButtonCredit"] = sf::FloatRect(1475, 700, 175, 75);
 
     // Level1
     this->hitbox["ground"] = sf::FloatRect(-3000, 3425, 5700, 100);
     this->hitbox["plateform"] = sf::FloatRect(-3000, 3425, 5700, 100);
 
     // Little Death
-    this->hitbox["littleDeath"] = sf::FloatRect(40, -20, 80, 160);
+    this->hitbox["littleDeath"] = sf::FloatRect(0, -20, 80, 160);
 
 // ------------------------------------------------------------------ Texture
     this->texture["none"];
 
     // Menu
     this->loadTexture("menuBackground", menu::background);
+    this->loadTexture("menuCredit", menu::credit);
 
     // Level1
     this->loadTexture("background", env::level1::background);
@@ -47,7 +50,7 @@ Data::Data()
     this->loadTexture("forest_6", env::level1::forest_6);
 
     // Little Death
-    this->hitbox["littleDeath"] = sf::FloatRect(40, -20, 80, 160);
+    this->hitbox["littleDeath"] = sf::FloatRect(-45, -75, 80, 160);
     this->loadTexture("littleDeathIdle", littleDeath::idle);
     this->loadTexture("littleDeathTurn", littleDeath::turn);
     this->loadTexture("littleDeathRun", littleDeath::run);

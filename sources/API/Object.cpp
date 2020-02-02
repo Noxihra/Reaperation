@@ -32,8 +32,8 @@ Object::Object(sf::Texture &texture, \
     _sprite.setScale(_scale);
     _sprite.setRotation(_angle);
     _sprite.setPosition(posX, posY);
-    _hitbox.left -= _hitbox.height / 2;
-    _hitbox.top -= _hitbox.width / 2;
+    // _hitbox.left -= _hitbox.height / 2;
+    // _hitbox.top -= _hitbox.width / 2;
 }
 
 const sf::Sprite &Object::getSprite() const
