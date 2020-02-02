@@ -32,7 +32,6 @@ public:
     void progressiveResetViewToPlayer();
     void setSpeedView(float speedX, float speedY);*/
 private:
-    Camera _camera;
 };
 
 #endif // LEVEL_HPP

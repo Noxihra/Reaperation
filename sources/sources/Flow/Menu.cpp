@@ -12,8 +12,9 @@ Menu::Menu(sf::RenderWindow &window, Object &background, sf::Music &music, \
     : Scene(window, background, music) \
     , _startButton(startButton), _exitButton(exitButton)
 {
-    //sf::Rect<float> tmp()
-    //sf::View()
+    sf::Rect<float> tmp(0, 0, 1920, 1080);
+    sf::View _camera(tmp);
+    _window.setView(_camera);
 }
 
 void Menu::keyPressed()

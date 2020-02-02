@@ -12,7 +12,7 @@
 #include "Character.hpp"
 
 Level::Level(sf::RenderWindow &window, Object &background, sf::Music &music)
-    : Scene(window, background, music), _camera(_window)
+    : Scene(window, background, music)
 {}
 
 void Level::keyPressed()

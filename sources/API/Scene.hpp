@@ -100,6 +100,8 @@ protected:
 
     bool _isOver;
 
+    Camera _camera;
+
 private:
 
     std::list<TextBox> _listEternalTextBox;

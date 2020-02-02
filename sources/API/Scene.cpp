@@ -16,7 +16,7 @@
 #include "Object.hpp" // Maybe not opti
 
 Scene::Scene(sf::RenderWindow &window, Object &background, sf::Music &music)
-    : _player(nullptr), _background(background), _window(window), _isOver(false), _music(music)
+    : _player(nullptr), _background(background), _window(window), _isOver(false), _camera(_window), _music(music)
 {
     _music.play();
     processPer();
