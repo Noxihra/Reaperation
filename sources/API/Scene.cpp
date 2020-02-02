@@ -42,12 +42,12 @@ void Scene::processEvents()
 {
     while (_window.pollEvent(_event)) {
         switch (_event.type) {
-        case sf::Event::Closed: _window.close(); break;
-        case sf::Event::KeyPressed: keyPressed(); break;
-        case sf::Event::KeyReleased: keyReleased(); break;
-        case sf::Event::MouseButtonPressed: mouseButtonPressed(); break;
-        case sf::Event::MouseButtonReleased: mouseButtonReleased(); break;
-        case sf::Event::MouseMoved: mouseMoved(); break;
+            case sf::Event::Closed: _window.close(); break;
+            case sf::Event::KeyPressed: keyPressed(); break;
+            case sf::Event::KeyReleased: keyReleased(); break;
+            case sf::Event::MouseButtonPressed: mouseButtonPressed(); break;
+            case sf::Event::MouseButtonReleased: mouseButtonReleased(); break;
+            case sf::Event::MouseMoved: mouseMoved(); break;
         }
     }
 }
@@ -68,17 +68,16 @@ void Scene::processDisplay()
         clockDisplay.restart();
         fps++;
         _window.clear();
-        _window.draw(_background.getSprite());
-        for (auto it : _listBackGround) {
+        for (auto it : _listEternalBackgrounds) {
             _window.draw(it.getSprite());
         }
         for (auto it : _listEternalObjects) {
             _window.draw(it.getSprite());
         }
-        for (auto it : _listEternalObjects) {
-            _window.draw(it.getSprite());
+        if (_player) {
+            _window.draw(_player->getSprite());
         }
-        for (auto it : _listTemporaryObjects) {
+        for (auto it : _listEternalForegrounds) {
             _window.draw(it.getSprite());
         }
         for (auto it : _listEternalTextBox) {
@@ -88,12 +87,6 @@ void Scene::processDisplay()
         for (auto it : _listTemporaryTextBox) {
             _window.draw(it.getBox());
             _window.draw(it.getText());
-        }
-        if (_player) {
-            _window.draw(_player->getSprite());
-        }
-        for (auto it : _listForeGround) {
-            _window.draw(it.getSprite());
         }
         processDisplayHitbox();
         _window.display();
@@ -226,8 +219,19 @@ void Scene::setBackground(Object &background)
     _background = background;
 }
 
+// -------------------------------------------------------- Backgrounds & foregrounds
+void Scene::addBackground(Object &object)
+{
+    _listEternalBackgrounds.push_back(object);
+}
+
+void Scene::addForeground(Object &object)
+{
+    _listEternalForegrounds.push_back(object);
+}
+
 // -------------------------------------------------------- FnLooper
-void Scene::addFnLooper(FnLooper &fn)
+void Scene::addFnLooper(FnLooper fn)
 {
     switch (fn.getFrequency()) {
     case FnLooper::EverySecond : _listFnEverySecond.push_back(fn); break;

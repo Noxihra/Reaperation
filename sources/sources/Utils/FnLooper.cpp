@@ -8,11 +8,10 @@
 #include <functional>
 #include "FnLooper.hpp"
 
-template<typename Fn, typename... Args>
-FnLooper::FnLooper(sf::Time duration, Frequency frequency, Fn &&fn, Args &&...args)
-    : _duration(duration), _frequency(frequency)
-    ,_fn(std::bind(std::forward(fn), std::forward(args)...))
-{}
+FnLooper::~FnLooper()
+{
+    this->_lastFn();
+}
 
 FnLooper::Frequency FnLooper::getFrequency() const
 {
@@ -21,7 +20,7 @@ FnLooper::Frequency FnLooper::getFrequency() const
 
 void FnLooper::operator()() const
 {
-    this->_fn();
+    this->_loopFn();
 }
 
 bool FnLooper::isOver() const

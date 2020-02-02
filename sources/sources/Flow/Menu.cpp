@@ -21,7 +21,6 @@ void Menu::keyPressed()
 {
     switch (_event.key.code) {
     case sf::Keyboard::Space:
-    case sf::Keyboard::Enter:
     case sf::Keyboard::Escape: _isOver = true; break;
     }
 }

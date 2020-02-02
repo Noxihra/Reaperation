@@ -59,6 +59,7 @@ public:
     void setScale(float scaleX, float scaleY);
     void setAngle(float angle);
     void setGrounded(bool newState);
+    void setPosition(sf::Vector2f position);
 
     void addSpeed(float x, float y);
     void move();

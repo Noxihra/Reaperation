@@ -35,10 +35,23 @@ int main()
                      data.texture["littleDeathDie"], \
                      data.hitbox["littleDeath"], 0, 0, 0.4, 0.4, 0, 0, 0, littleDeath::textureRect);
                      //data.hitbox["ground"], 0, 0, 0.4, 0.4, 0, 0, 0, littleDeath::textureRect);
-
-    Level startingZone(data.window, background, data.music["level1"]);
-    startingZone.addObject(ground);
-    startingZone.setPlayer(&player);
+    player.setPosition(sf::Vector2f(0, 0));
+    ground.setPosition(sf::Vector2f(0, 500));
+    Object backgroundFirstLayer(data.texture["forest_1"], sfFloatRect0DefaultValue, 0, 0, 0, 1, 1, 0, 0, 0);
+    Object backgroundSecondLayer(data.texture["forest_2"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
+    Object backgroundThirdLayer(data.texture["forest_3"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
+    Object backgroundFourthLayer(data.texture["forest_4"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
+    Object backgroundFifthLayer(data.texture["forest_5"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
+    Object backgroundSixthLayer(data.texture["forest_6"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
+    Level forestLevel(data.window, backgroundSixthLayer, data.music["level1"]);
+    forestLevel.addBackground(backgroundSixthLayer);
+    forestLevel.addBackground(backgroundFifthLayer);
+    forestLevel.addBackground(backgroundFourthLayer);
+    forestLevel.addBackground(backgroundThirdLayer);
+    forestLevel.addBackground(backgroundSecondLayer);
+    forestLevel.addBackground(backgroundFirstLayer);
+    forestLevel.addObject(ground);
+    forestLevel.setPlayer(&player);
 
 // ------------------------------------------------------------------ Loop Menu
     while (!menu.isOver()) {
@@ -47,10 +60,10 @@ int main()
 
 // ------------------------------------------------------------------ Loop Level1
 
-    while (!startingZone.isOver()) {
-        if (startingZone.process())
-            if (startingZone._isDie) {
-                break;
-            }
+    while (!forestLevel.isOver()) {
+        if (forestLevel.process())
+            if (forestLevel._isDie) {
+                forestLevel.closeWindow();
+        }
     }
 }

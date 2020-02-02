@@ -182,6 +182,11 @@ void Object::setAngle(float angle)
     _sprite.setRotation(_angle);
 }
 
+void Object::setPosition(sf::Vector2f position)
+{
+    _sprite.setPosition(position);
+}
+
 void Object::addSpeed(float x, float y)
 {
     _speed.x += x;

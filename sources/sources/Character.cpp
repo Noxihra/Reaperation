@@ -32,12 +32,12 @@ Character::Character(sf::Texture &textureIdle, sf::Texture &textureTurn, \
     this->setSpriteCenter();
 }
 
-void Character::idle(Direction direction)
+void Character::idle(Direction direction, Scene &scene)
 {
     if (direction == Left) {
         _isLeftPressed = false;
         if (_isRightPressed) {
-            run(Right);
+            run(Right, scene);
         } else {
             this->setTexture(_textureIdle);
             this->setSpeed(0, _speed.y);
@@ -45,7 +45,7 @@ void Character::idle(Direction direction)
     } else if (direction == Right) {
         _isRightPressed = false;
         if (_isLeftPressed) {
-            run(Left);
+            run(Left, scene);
         } else {
             this->setTexture(_textureIdle);
             this->setSpeed(0, _speed.y);
@@ -53,31 +53,38 @@ void Character::idle(Direction direction)
     }
 }
 
-void Character::turn(Direction direction)
+void Character::turn(Direction direction, Scene &scene)
 {
+    scene.addFnLooper(FnLooper(sf::seconds(.12), FnLooper::EveryMillisecond,
+                               []{}, [&]{ this->setTexture(_textureIdle); }));
+
+    this->setTexture(_textureTurn);
     this->setScale(-_scale.x, _scale.y);
     _currentDirection = direction;
+
 }
 
-void Character::walk(Direction direction [[gnu::unused]])
+void Character::walk(Direction direction [[gnu::unused]], Scene &scene [[gnu::unused]])
 {
 }
 
-void Character::run(Direction direction)
+void Character::run(Direction direction, Scene &scene)
 {
     if (direction == Left) {
         if (_currentDirection != direction) {
-            this->turn(direction);
+            this->turn(direction, scene);
+        } else {
+            this->setTexture(_textureRun);
         }
         _isLeftPressed = true;
-        this->setTexture(_textureRun);
         this->setSpeed(-5, _speed.y);
     } else if (direction == Right) {
         if (_currentDirection != direction) {
-            this->turn(direction);
+            this->turn(direction, scene);
+        } else {
+            this->setTexture(_textureRun);
         }
         _isRightPressed = true;
-        this->setTexture(_textureRun);
         this->setSpeed(5, _speed.y);
     }
 }
@@ -89,7 +96,7 @@ void Character::jump()
     }
 }
 
-void Character::fall(Direction direction [[gnu::unused]])
+void Character::fall(Direction direction [[gnu::unused]], Scene &scene [[gnu::unused]])
 {
 }
 

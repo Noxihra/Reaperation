@@ -20,7 +20,7 @@ Data::Data()
 
 // ------------------------------------------------------------------ Hitbox
     // Level1
-    this->hitbox["ground"] = sf::FloatRect(-3000, 3625, 5700, 100);
+    this->hitbox["ground"] = sf::FloatRect(0, 500, 15000, 100);
     this->hitbox["plateform"] = sf::FloatRect(-3000, 3425, 5700, 100);
 
     // Little Death
@@ -33,15 +33,24 @@ Data::Data()
     this->loadTexture("menuBackground", menu::background);
 
     // Level1
-    this->loadTexture("background", env::background);
-    this->loadTexture("plateform", env::plateform);
+    this->loadTexture("background", env::level1::background);
+    this->loadTexture("plateform", env::level1::plateform);
+    this->loadTexture("forest_1", env::level1::forest_1);
+    this->loadTexture("forest_2", env::level1::forest_2);
+    this->loadTexture("forest_3", env::level1::forest_3);
+    this->loadTexture("forest_4", env::level1::forest_4);
+    this->loadTexture("forest_5", env::level1::forest_5);
+    this->loadTexture("forest_6", env::level1::forest_6);
 
     // Little Death
     this->hitbox["littleDeath"] = sf::FloatRect(40, -20, 80, 160);
     this->loadTexture("littleDeathIdle", littleDeath::idle);
+    this->loadTexture("littleDeathTurn", littleDeath::turn);
     this->loadTexture("littleDeathRun", littleDeath::run);
     this->loadTexture("littleDeathRun3", littleDeath::run2);
     this->loadTexture("littleDeathDie", littleDeath::die);
+
+    // Forest level backgrounds
 
 // ------------------------------------------------------------------ Music
     // Menu

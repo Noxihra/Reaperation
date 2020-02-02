@@ -22,14 +22,14 @@ void Level::keyPressed()
 // -------------------------------------------------------- Movement
     case sf::Keyboard::D:
         if (!_isDie) {
-            _player->run(Character::Direction::Right);
+            _player->run(Character::Direction::Right, *this);
             _camera.setSpeedView((!!_camera.getVecView().x) * 5 *(1 - 2 * (_camera.getVecView().x > 0)), (!!_camera.getVecView().y) * 5 *(1 - 2 * (_camera.getVecView().y > 0)));
             _camera.setMoving(true);
         }
         break;
     case sf::Keyboard::Q:
         if (!_isDie) {
-            _player->run(Character::Direction::Left); 
+            _player->run(Character::Direction::Left, *this);
             _camera.setSpeedView((!!_camera.getVecView().x) * 5 *(1 - 2 * (_camera.getVecView().x > 0)), (!!_camera.getVecView().y) * 5 *(1 - 2 * (_camera.getVecView().y > 0)));
             _camera.setMoving(true) ;
         }
@@ -53,8 +53,8 @@ void Level::keyReleased()
     switch (_event.key.code) {
 
 // -------------------------------------------------------- Movement
-    case sf::Keyboard::D: if (!_isDie) {_player->idle(Character::Direction::Right); _camera.setSpeedView(0, 0); _camera.setMoving(false);} break;
-    case sf::Keyboard::Q: if (!_isDie) {_player->idle(Character::Direction::Left); _camera.setSpeedView(0, 0); _camera.setMoving(false);} break;
+    case sf::Keyboard::D: if (!_isDie) {_player->idle(Character::Direction::Right, *this); _camera.setSpeedView(0, 0); _camera.setMoving(false);} break;
+    case sf::Keyboard::Q: if (!_isDie) {_player->idle(Character::Direction::Left, *this); _camera.setSpeedView(0, 0); _camera.setMoving(false);} break;
 
 // -------------------------------------------------------- View
     case sf::Keyboard::Left:

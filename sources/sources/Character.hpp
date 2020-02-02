@@ -9,6 +9,7 @@
 #define CHARACTER_HPP
 
 #include "API/Object.hpp"
+#include "API/Scene.hpp"
 
 class Character : public Object {
 public:
@@ -28,12 +29,12 @@ public:
         Right
     };
 
-    void idle(Direction direction);
-    void turn(Direction direction);
-    void walk(Direction direction);
-    void run(Direction direction);
+    void idle(Direction direction, Scene &scene);
+    void turn(Direction direction, Scene &scene);
+    void walk(Direction direction, Scene &scene);
+    void run(Direction direction, Scene &scene);
     void jump();
-    void fall(Direction direction);
+    void fall(Direction direction, Scene &scene);
 
     // Return bool to wait die animation
     bool anime(bool isDie = false);

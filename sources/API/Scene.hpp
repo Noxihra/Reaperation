@@ -74,8 +74,12 @@ public:
     void addLayerBackground(Object &background);
     void setPlayer(Character *player);
 
+    // ---------------------------------------------------- Backgrounds & Foregrounds
+    void addBackground(Object &object);
+    void addForeground(Object &object);
+
     // ---------------------------------------------------- FnLooper
-    void addFnLooper(FnLooper &fn);
+    void addFnLooper(FnLooper fn);
 
     // ---------------------------------------------------- Camera
     virtual void followingPlayerView();
@@ -107,10 +111,10 @@ private:
     std::list<TextBox> _listEternalTextBox;
     std::list<TextBox> _listTemporaryTextBox;
 
-    std::list<Object> _listBackGround;
-    std::list<Object> _listForeGround;
+    std::list<Object> _listEternalBackgrounds;
     std::list<Object> _listEternalObjects;
     std::list<Object> _listTemporaryObjects;
+    std::list<Object> _listEternalForegrounds;
 
     std::list<FnLooper> _listFnEverySecond;
     std::list<FnLooper> _listFnEveryDecisecond;

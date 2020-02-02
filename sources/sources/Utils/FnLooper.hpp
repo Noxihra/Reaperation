@@ -20,8 +20,13 @@ public:
         EveryMillisecond,
     };
 
-    template<typename Fn, typename... Args>
-    FnLooper(sf::Time duration, Frequency frequency, Fn&& fn, Args&&... args);
+    template<typename LoopFn, typename... LoopArgs,
+             typename LastFn, typename... LastArgs>
+    FnLooper(sf::Time duration, Frequency frequency,
+             LoopFn &&loopFn, LoopArgs &&...loopArgs,
+             LastFn &&lastFn = []{}, LastArgs &&...lastArgs);
+
+    ~FnLooper();
 
     Frequency getFrequency() const;
 
@@ -29,10 +34,22 @@ public:
     bool isOver() const;
 
 private:
-    std::function<void()> _fn;
-    Frequency _frequency;
-    sf::Time _duration;
     sf::Clock _clock;
+    sf::Time _duration;
+    Frequency _frequency;
+    std::function<void()> _loopFn, _lastFn;
 };
+
+template<typename LoopFn, typename... LoopArgs,
+         typename LastFn, typename... LastArgs>
+FnLooper::FnLooper(sf::Time duration, Frequency frequency,
+                   LoopFn &&loopFn, LoopArgs &&...loopArgs,
+                   LastFn &&lastFn, LastArgs &&...lastArgs)
+    : _duration(duration), _frequency(frequency) \
+    , _loopFn(std::bind(loopFn, std::forward(loopArgs)...)) \
+    , _lastFn(std::bind(lastFn, std::forward(lastArgs)...))
+{
+    this->_loopFn();
+}
 
 #endif
