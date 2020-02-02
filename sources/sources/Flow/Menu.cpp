@@ -20,26 +20,20 @@ Menu::Menu(sf::RenderWindow &window, Object &background, sf::Music &music, \
 }
 
 void Menu::keyPressed()
-{
-    switch (_event.key.code) {
-    case sf::Keyboard::Space:
-    case sf::Keyboard::Escape: _isOver = true; break;
-    }
-}
+{}
 
 void Menu::keyReleased()
-{
-    switch (_event.key.code) {
-    case sf::Keyboard::Escape: break;
-    }
-}
+{}
 
 void Menu::mouseButtonPressed()
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        sf::Vector2i position [[ gnu::unused ]] = sf::Mouse::getPosition();
-    } else if(sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-        sf::Vector2i position [[ gnu::unused ]] = sf::Mouse::getPosition();
+        sf::Vector2f position = sf::Vector2f(sf::Mouse::getPosition());
+        if (_startButton.getHitbox().contains(position)) {
+            _isOver = true;
+        } else if (_exitButton.getHitbox().contains(position)) {
+            _window.close();
+        }
     }
 }
 

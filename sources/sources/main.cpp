@@ -35,8 +35,6 @@ int main()
                      data.texture["littleDeathDie"], \
                      data.hitbox["littleDeath"], 0, 0, 0.4, 0.4, 0, 0, 0, littleDeath::textureRect);
                      //data.hitbox["ground"], 0, 0, 0.4, 0.4, 0, 0, 0, littleDeath::textureRect);
-    player.setPosition(sf::Vector2f(0, 0));
-    ground.setPosition(sf::Vector2f(0, 500));
     Object backgroundFirstLayer(data.texture["forest_1"], sfFloatRect0DefaultValue, 0, 0, 0, 1, 1, 0, 0, 0);
     Object backgroundSecondLayer(data.texture["forest_2"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);
     Object backgroundThirdLayer(data.texture["forest_3"], sfFloatRect0DefaultValue, 0, 0, 1, 1, 0, 0, 0);

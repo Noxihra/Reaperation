@@ -69,6 +69,7 @@ void Scene::processDisplay()
         clockDisplay.restart();
         fps++;
         _window.clear();
+        _window.draw(_background.getSprite());
         for (auto it : _listEternalBackgrounds) {
             _window.draw(it.getSprite());
         }
