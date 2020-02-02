@@ -19,6 +19,10 @@ Data::Data()
     this->window.setKeyRepeatEnabled(false);
 
 // ------------------------------------------------------------------ Hitbox
+    // Menu
+    this->hitbox["menuStartButton"] = sf::FloatRect(965, 735, 225, 125);
+    this->hitbox["menuExitButton"] = sf::FloatRect(0, 0, 100, 100);
+
     // Level1
     this->hitbox["ground"] = sf::FloatRect(0, 500, 15000, 100);
     this->hitbox["plateform"] = sf::FloatRect(-3000, 3425, 5700, 100);

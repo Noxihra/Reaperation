@@ -26,11 +26,6 @@ public:
     void processPerCentisecond() final;
     void processPerMillisecond() final;
     void processPerFrame() final;
-    /*
-    void followingPlayerView() final;
-    void moveView(sf::Vector2f &);
-    void progressiveResetViewToPlayer();
-    void setSpeedView(float speedX, float speedY);*/
 private:
 };
 

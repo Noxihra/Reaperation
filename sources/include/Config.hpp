@@ -59,6 +59,7 @@ namespace littleDeath {
 
 #define MIDDLEX 2680
 #define MIDDLEY 1227
-#define DEBUG = true
+
+#define DEBUG true
 
 #endif // CONFIG

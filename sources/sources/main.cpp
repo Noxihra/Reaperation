@@ -22,8 +22,8 @@ int main()
 // ------------------------------------------------------------------ Menu
     // Menu menu(data.window);
     Object menuBackground(data.texture["menuBackground"]);
-    Object startButton(data.texture["none"], data.hitbox["ground"]);
-    Object exitButton(data.texture["none"], data.hitbox["ground"]);
+    Object startButton(data.texture["none"], data.hitbox["menuStartButton"]);
+    Object exitButton(data.texture["none"], data.hitbox["menuExitButton"]);
     Menu menu(data.window, menuBackground, data.music["menu"], startButton, exitButton);
 
 // ------------------------------------------------------------------ Level1
